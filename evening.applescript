@@ -8,7 +8,13 @@ tell application "Things3"
     set tagList to tags of aTodo
     repeat with aTag in tagList
       if (name of aTag as text) is "Evening"
-        set theUrl to "things:///update?auth-token=" & theToken & "&id=" & (id of aTodo as text) & "&when=evening"
+        if class of aTodo is project
+          set urlCommand to "update-project"
+        else
+          set urlCommand to "update"
+        end if
+
+        set theUrl to "things:///" & urlCommand & "?auth-token=" & theToken & "&id=" & (id of aTodo as text) & "&when=evening"
         open location theUrl
       end if
     end repeat
