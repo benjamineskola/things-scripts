@@ -2,7 +2,7 @@
 
 tell application "Things3"
   set theToken to "your-auth-token"
-  
+
   set theTodos to to dos of list "Today"
   repeat with aTodo in theTodos
     set tagList to tags of aTodo
