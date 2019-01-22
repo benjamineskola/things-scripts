@@ -21,6 +21,17 @@ tell application "Things3"
          set aWord to text 2 thru -1 of aWord
          copy aWord to end of theTags
        end if
+
+       if (offset of "@" in aWord) = 1
+         set AppleScript's text item delimiters to aWord
+         set titleLst to title's text items
+         set name of inboxTodo to titleLst as text
+         set title to name of inboxToDo
+         set AppleScript's text item delimiters to ""
+
+         set aWord to text 2 thru -1 of aWord
+         move inboxToDo to area aWord
+       end if
      end repeat
      set AppleScript's text item delimiters to ", "
      set tag names of inboxToDo to (theTags as text)
